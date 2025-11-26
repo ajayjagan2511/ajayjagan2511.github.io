@@ -1,154 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ajay Jagannath | ML & SDE Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* Basic Reset */
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
-    body { line-height: 1.6; color: #333; background: #f9f9f9; }
-    .container { max-width: 960px; margin: auto; padding: 20px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ajay Jagannath - Machine Learning Engineer & CS Researcher">
+    <title>Ajay Jagannath | Researcher & Engineer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* Header */
-    header { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-bottom: 30px; }
-    header img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid #00629B; }
-    header h1 { font-size: 2rem; color: #00629B; }
-    header p { margin-top: 10px; font-size: 1rem; }
-    .links a { margin-right: 15px; text-decoration: none; color: #00629B; font-weight: bold; }
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #2dd4bf; /* Teal */
+            --accent-hover: #14b8a6;
+            --font-main: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
 
-    /* Sections */
-    section { margin-bottom: 40px; }
-    section h2 { font-size: 1.4rem; margin-bottom: 10px; color: #00629B; border-bottom: 2px solid #00629B; padding-bottom: 5px; }
-    ul { margin-left: 20px; list-style-type: square; }
-    .project, .education-item, .experience-item { margin-bottom: 15px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-    /* Footer */
-    footer { text-align: center; font-size: 0.9rem; color: #777; margin-top: 40px; }
+        /* --- Header & Nav --- */
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      header { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent); }
+
+        nav ul { display: flex; gap: 2rem; }
+        nav a { font-size: 0.9rem; color: var(--text-secondary); }
+        nav a:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons { display: flex; gap: 1rem; }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn:hover { background: rgba(45, 212, 191, 0.1); }
+        .btn-fill { background: var(--accent); color: var(--bg-color); }
+        .btn-fill:hover { background: var(--accent-hover); color: white; }
+
+        /* --- Sections Common --- */
+        section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: rgba(255,255,255,0.1);
+        }
+        .section-title span { color: var(--accent); font-family: var(--font-code); font-size: 1rem; margin-right: 0.5rem; }
+
+        /* --- Research Cards --- */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .card-top { margin-bottom: 1.5rem; }
+        
+        .folder-icon { color: var(--accent); font-size: 2rem; margin-bottom: 1.5rem; }
+        
+        .card h3 { margin-bottom: 1rem; font-size: 1.25rem; }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .card-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .card-links a:hover { color: var(--accent); }
+
+        /* --- Experience --- */
+        .exp-item {
+            border-left: 2px solid rgba(255,255,255,0.1);
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .exp-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .exp-role { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); }
+        .exp-company { color: var(--accent); font-family: var(--font-code); margin-bottom: 0.5rem; display: block;}
+        .exp-date { font-family: var(--font-code); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: block;}
+        .exp-desc li { 
+            color: var(--text-secondary); 
+            margin-bottom: 0.5rem; 
+            font-size: 0.95rem; 
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .exp-desc li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: var(--font-code);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Mobile nav omitted for brevity */
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+
     <header>
-      <!-- Replace with your photo -->
-      <img src="assets/profile.jpeg" alt="Ajay Jagannath headshot">
-      <div>
-        <h1>Ajay Jagannath</h1>
-        <p>Master of Computer Science Student at Texas A&amp;M University | Machine Learning &amp; Software Engineer</p>
-        <p class="links">
-          <a href="mailto:ajayjagan2511@tamu.edu">Email</a>
-          <a href="https://linkedin.com/in/ajayjagan2511" target="_blank">LinkedIn</a>
-          <a href="https://github.com/ajayjagan2511" target="_blank">GitHub</a>
-          <a href="Jagannath_Ajay.pdf" target="_blank">Resume</a>
-        </p>
-      </div>
+        <a href="#" class="logo">Ajay<span>.</span></a>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="mailto:ajayjagan2511@tamu.edu" class="btn">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="summary">
-      <h2>Professional Summary</h2>
-      <p>Hi, I'm an engineer with 2+ years of experience in building production software at Standard Chartered and a 4.0 GPA in graduate studies. I have worked accross multiple domains like full‑stack development, data engineering, and cutting‑edge ML research on representation learning, reinforcement learning, LLM reasoning, and 3D Computer Vision. I'm actively pursuing full‑time roles in Machine Learning Engineering or Software Development starting 2026.</p>
+    <section class="hero">
+        <div>
+            <span style="color: var(--accent); font-family: var(--font-code);">Hi, my name is</span>
+            <h1>Ajay Jagannath.</h1>
+            <h1>I build systems that understand.</h1>
+            <p>
+                I am a Master's student at Texas A&M University bridging the gap between scalable systems engineering and interpretable AI. My work focuses on Large Language Models (LLMs), Chain-of-Thought reasoning, and multimodal representation learning.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://github.com/ajayjagan2511" target="_blank" class="btn btn-fill"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/ajayjagan2511" target="_blank" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
     </section>
 
-   <section id="education">
-      <h2>Education</h2>
-      <div class="education-item">
-        <strong>Texas A&amp;M University</strong>, Master of Computer Science — <strong>GPA:</strong> 4.0/4.0<br>
-        <em>Aug 2024 – May 2026 (expected), College Station, TX</em><br>
-        <strong>Relevant Courses:</strong> Deep Learning, Advanced Algorithms, Natural Language Processing, 3D Vision & Graphics, Robotics and Spatial Intelligence
-      </div>
-      <div class="education-item">
-        <strong>Indian Institute of Technology (ISM) Dhanbad</strong>, B.Tech. Electronics &amp; Communication — <strong>GPA:</strong> 9.03/10<br>
-        <em>Jul 2018 – May 2022, Dhanbad, India</em>
-      </div>
+    <section id="research">
+        <h2 class="section-title"><span>01.</span> Selected Research</h2>
+        <div class="research-grid">
+            
+            <div class="card">
+                <div class="card-top">
+                    <i class="far fa-file-alt folder-icon"></i>
+                    <h3>Unified Augmented Learning for Cross-Modal Representations (AmCLR)</h3>
+                    <p>
+                        Proposed a memory-efficient framework (AmCLR/xAmCLR) for bimodal contrastive learning. Achieved superior retrieval performance on CC3M using significantly smaller batch sizes (128) compared to CLIP baselines.
+                    </p>
+                    <div class="tech-stack">
+                        <span>PyTorch</span>
+                        <span>Contrastive Learning</span>
+                        <span>ResNet-50</span>
+                        <span>DistilBERT</span>
+                    </div>
+                </div>
+                <div class="card-links">
+                    <a href="#" title="View Paper"><i class="fas fa-external-link-alt"></i> arXiv (Coming Soon)</a>
+                    <a href="#" title="View Code"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <i class="fas fa-brain folder-icon"></i>
+                    <h3>Computing Neuron-Level Importance in CoT Reasoning</h3>
+                    <p>
+                        Developed a mechanistic interpretability pipeline to identify reasoning-critical neurons in LLMs. Enhanced these neurons to achieve a 14% accuracy boost on the GSM8K benchmark.
+                    </p>
+                    <div class="tech-stack">
+                        <span>Mechanistic Interpretability</span>
+                        <span>LLMs</span>
+                        <span>Attribution Scores</span>
+                        <span>GSM8K</span>
+                    </div>
+                </div>
+                <div class="card-links">
+                    <a href="https://github.com/ajayjagan2511" title="View Project"><i class="fab fa-github"></i> Project Repo</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <i class="fas fa-shield-alt folder-icon"></i>
+                    <h3>Game of Adversaries: Silent Shifts in Vector Space</h3>
+                    <p>
+                        Explored adversarial attacks on LLMs using a novel Score Distillation Sampling (SDS) approach. Validated semantic preservation using an external LLM-based "semantic judge."
+                    </p>
+                    <div class="tech-stack">
+                        <span>Adversarial NLP</span>
+                        <span>Mistral-7B</span>
+                        <span>SDS Optimization</span>
+                        <span>Safety Alignment</span>
+                    </div>
+                </div>
+                <div class="card-links">
+                    <a href="#" title="View Report"><i class="far fa-file-pdf"></i> Read Report</a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="projects">
-      <h2>Notable Projects</h2>
-      <div class="project">
-        <strong>Unified Augmented Learning for Cross‑Modal Representations</strong>
-        <ul>
-          <li>Devised <em>AmCLR</em> to approximate global contrastive loss for efficient small‑batch training on image‑text pairs.</li>
-          <li>Achieved 5.31% and 6.55% improvements over the SogCLR baseline on retrieval and zero‑shot classification.</li>
-        </ul>
-      </div>
-      <div class="project">
-        <strong>AdaptiveEvict: RL Token Window Management for LLMs</strong>
-        <ul>
-          <li>Framed token eviction as an MDP and implemented Soft Actor–Critic within a two‑tier KV‑cache.</li>
-          <li>Cut retained tokens by up to 40%, incurring only a ~1% quality drop.</li>
-        </ul>
-      </div>
-      <div class="project">
-        <strong>Game of Adversaries: Silent Shifts in Vector Space</strong>
-        <ul>
-          <li>Created a Score Distillation Sampling based framework to create sentence level embedding perturbations, bypassing Mistral‑7B safety while preserving &gt;90% token overlap.</li>
-        </ul>
-      </div>
-      <div class="project">
-        <strong>GStitch: Fusion of Overlapping Gaussian Scenes</strong>
-        <ul>
-          <li>Fused partial 3D Gaussian‑splat reconstructions with noisy overlaps, boosting PSNR by 16.9% and SSIM by 2.3% while reducing LPIPS by 21.3%.</li>
-        </ul>
-      </div>
-      <div class="project">
-        <strong>InDocQ: Intelligent Document Q&amp;A System</strong>
-        <ul>
-          <li>Built an interactive PDF Q&amp;A system with LangChain, Gemini Pro, FAISS, and StreamLit for real‑time document insights.</li>
-        </ul>
-      </div>
+        <h2 class="section-title"><span>02.</span> Technical Projects</h2>
+        <div class="research-grid">
+
+            <div class="card">
+                <div class="card-top">
+                    <i class="fas fa-paint-brush folder-icon"></i>
+                    <h3>PEFT for Diffusion Style Transfer</h3>
+                    <p>
+                        Engineered a dual-model regularization framework to fine-tune SDXL using LoRA and SaRA. Improved style alignment by 19% (CLIP Score) while preventing catastrophic forgetting.
+                    </p>
+                    <div class="tech-stack">
+                        <span>Stable Diffusion XL</span>
+                        <span>LoRA/SaRA</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+                <div class="card-links">
+                    <a href="https://github.com/ajayjagan2511" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <i class="fas fa-microchip folder-icon"></i>
+                    <h3>Demand-Paged Virtual Memory Manager</h3>
+                    <p>
+                        Implemented a minimal x86 kernel in C++ featuring a complete virtual memory subsystem, recursive page table mapping, and a preemptive multi-threaded scheduler.
+                    </p>
+                    <div class="tech-stack">
+                        <span>C++</span>
+                        <span>x86 Assembly</span>
+                        <span>OS Architecture</span>
+                    </div>
+                </div>
+                <div class="card-links">
+                    <a href="https://github.com/ajayjagan2511" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <i class="fas fa-utensils folder-icon"></i>
+                    <h3>Multimodal Calorie Estimation</h3>
+                    <p>
+                        Fused Time-Series (CGM), Visual (Food Images), and Textual data using specialized Transformer architectures to predict caloric intake with high precision.
+                    </p>
+                    <div class="tech-stack">
+                        <span>Time-Series Transformers</span>
+                        <span>ViT</span>
+                        <span>Multimodal Fusion</span>
+                    </div>
+                </div>
+                <div class="card-links">
+                    <a href="#" target="_blank"><i class="far fa-file-pdf"></i> Paper</a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="experience">
-      <h2>Work Experience</h2>
-      <div class="experience-item">
-        <strong>Standard Chartered Global Business Services</strong> — Development Engineer<br>
-        <em>July 2022 – July 2024 | Chennai, India</em>
-        <ul>
-          <li>Led development of an internal auditing platform rolled out to 30+ countries, saving ≈ $1 M annually.</li>
-          <li>Reduced disk usage by 10% via RPA and process‑model optimization; built data‑lake ETL pipelines enhancing analytics.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <strong>Standard Chartered Global Business Services</strong> — Intern<br>
-        <em>May 2021 – July 2021 | Chennai, India</em>
-        <ul>
-          <li>Developed a full‑text search engine over 5 TB of unstructured data using Hibernate ORM and Elastic Search.</li>
-        </ul>
-      </div>
-    </section>
+        <h2 class="section-title"><span>03.</span> Experience</h2>
+        
+        <div class="exp-item">
+            <span class="exp-role">Software Engineer</span>
+            <span class="exp-company">@ Standard Chartered Global Business Services</span>
+            <span class="exp-date">July 2022 - July 2024</span>
+            <ul class="exp-desc">
+                <li>Led end-to-end development of an internal auditing application, replacing legacy systems across 30+ countries.</li>
+                <li>Delivered $1 million in annual savings through streamlined processes and automated workflows.</li>
+                <li>Optimized server resource utilization, reducing disk usage by 10% via automated engineering scripts.</li>
+                <li>Engineered an ETL pipeline for data lake integration, significantly enhancing analytics capabilities.</li>
+            </ul>
+        </div>
 
-  
+        <div class="exp-item">
+            <span class="exp-role">Intern</span>
+            <span class="exp-company">@ Standard Chartered Global Business Services</span>
+            <span class="exp-date">May 2021 - July 2021</span>
+            <ul class="exp-desc">
+                <li>Built a full-text search engine using Hibernate ORM and ElasticSearch to process 5TB of unstructured data.</li>
+                <li>Achieved a 6-fold increase in data retrieval speeds compared to traditional database queries.</li>
+            </ul>
+        </div>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div>
-          <strong>Languages</strong><br>
-          C/C++, Java, JavaScript, MATLAB, Python, R, SQL
-        </div>
-        <div>
-          <strong>Frameworks &amp; Libraries</strong><br>
-          HuggingFace, Keras, LangChain, PyTorch, React, Spring Boot, StreamLit, TensorFlow
-        </div>
-        <div>
-          <strong>Tools &amp; Platforms</strong><br>
-          Docker, Kubernetes, Azure DevOps, Git, Linux, Tableau, Appian, Anaconda, ETK Stack, Jira, Maven, Node.js, pgAdmin, Postman
-        </div>
-      </div>
     </section>
 
     <footer>
-      © 2025 Ajay Jagannath — Built using GitHub Pages
+        <p>Designed & Built by Ajay Jagannath</p>
+        <div style="margin-top: 1rem; font-size: 1.2rem;">
+            <a href="https://github.com/ajayjagan2511" style="margin: 0 10px;"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/ajayjagan2511" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:ajayjagan2511@tamu.edu" style="margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+        </div>
     </footer>
-  </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
